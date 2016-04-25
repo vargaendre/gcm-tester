@@ -1,9 +1,5 @@
 var gcm = new Gcm();
 
-chrome.runtime.onStartup.addListener(function() {
-    chrome.gcm.onMessage.addListener(gcm.onMessage);
-})
-
 function renderStatus(statusText) {
     document.getElementById('status').textContent = statusText;
 }
@@ -36,4 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
             displayRegisteredWithDetails(registered.registrationId);
         }
     });
+
+    chrome.gcm.onMessage.addListener(gcm.onMessage);
 });
